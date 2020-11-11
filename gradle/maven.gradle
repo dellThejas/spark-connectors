@@ -1,14 +1,14 @@
 /**
- * Copyright (c) Dell Inc., or its subsidiaries. All Rights Reserved.
+ * Copyright (c) 2017 Dell Inc., or its subsidiaries. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  */
 
-// refer https://docs.gradle.org/current/userguide/signing_plugin.html for details about how to sign
 apply plugin: 'maven'
 apply plugin: 'signing'
 
@@ -86,6 +86,16 @@ tasks.withType(Upload) {
                     url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
             }
+            developers {
+                developer {
+                    id 'cf'
+                    name 'Claudio Fahey'
+                }
+                developer {
+                    id 'tj'
+                    name 'Thejas Vidyasagar'
+                }
+            }
         }
 
         pom.scopeMappings.mappings.remove(configurations.testCompile)
@@ -116,3 +126,4 @@ MavenPom pom = install.repositories.mavenInstaller.pom
 pom.scopeMappings.mappings.remove(configurations.compile)
 pom.scopeMappings.mappings.remove(configurations.runtime)
 pom.scopeMappings.addMapping(MavenPlugin.RUNTIME_PRIORITY, configurations.shadow, Conf2ScopeMappingContainer.RUNTIME)
+
